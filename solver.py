@@ -79,4 +79,4 @@ def sudoku_solver(grid, visual=0.0):
         return True
 
 
-sudoku_solver(example_grid, 0.01)
+sudoku_solver(example_grid, 0.05)
