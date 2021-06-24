@@ -1,4 +1,3 @@
-import numpy
 example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 4, 3],
                 [5, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -12,7 +11,24 @@ example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
 
 
 
+def pretty_matrix(array=[[]]):
+    for count, i in enumerate(array):
+        line = ""
+        if count == 3 or count == 6:
+            for _ in range(len(i) + 2):
+                line += "-" + " "
+            print(line)
+            line = ""
+        for count, value in enumerate(i):
+            if count == 2 or count == 5:
+                line += str(value) + " "
+                line += "|" + " "
+            else:
+                line += str(value) + " "
+        print(line)
 
+
+# pretty_matrix(example_grid)
 
 
 def helperfunc(number, position_x, position_y, grid):  # Return true if number works in position on grid, else false
@@ -46,7 +62,7 @@ def sudoku_solver(grid):
                 return  # Return when no 0s in grid
 
 
-    print(numpy.matrix(grid))  # Print a working solution
+    pretty_matrix(grid)  # Print a working solution
     more = input("Y/N for more solutions: ")
     if more.lower() == "y":
         pass
