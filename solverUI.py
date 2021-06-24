@@ -18,13 +18,16 @@ def resource_path(relative_path):
 
 
 grid = []
-acceptable = [1,2,3,4,5,6,7,8,9]
 def make_array():
     global grid
+    acceptable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     for j in range(9):
         row = []
         for i in range(9):
-            row.append(int(rows[f"{j}" + f"{i}"].get()))
+            if rows[f"{j}" + f"{i}"].get() in acceptable:
+                row.append(int(rows[f"{j}" + f"{i}"].get()))
+            else:
+                row.append(0)
         grid.append(row)
 
 
@@ -63,7 +66,7 @@ for j in range(9):
     for i in range(9):
         entry = tkinter.Entry(width=2)
         # entry.insert(tkinter.END, f"{j}" + f"{i}")
-        entry.insert(tkinter.END, 0)
+        # entry.insert(tkinter.END, 0)
         rows[f"{j}" + f"{i}"] = entry
         entry_window = my_canvas.create_window((i+1) * 60, (j+1) * 60, window=rows[f"{j}" + f"{i}"])
         windows[f"{j}" + f"{i}"] = entry_window
