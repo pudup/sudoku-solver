@@ -22,7 +22,7 @@ grid = []
 
 def make_array():
     global grid
-    acceptable = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    acceptable = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     for j in range(9):
         row = []
         for i in range(9):
@@ -45,7 +45,6 @@ def solve():
     global grid
     make_array()
     sudoku_solver(grid)
-    pretty_matrix(grid)
     show_answer()
 
 
