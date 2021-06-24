@@ -52,8 +52,8 @@ my_window.title("Didi Solve Solve")
 my_window.config(width=600, height=600, padx=60, pady=50,)
 
 my_canvas = tkinter.Canvas(width=600, height=600, highlightthickness=0)
-tomato = tkinter.PhotoImage(file=resource_path("backgr6.png"))
-my_canvas.create_image(300, 300, image=tomato)
+grid_image = tkinter.PhotoImage(file=resource_path("backgr6.png"))
+my_canvas.create_image(300, 300, image=grid_image)
 my_canvas.grid(column=4, row=4)
 
 
