@@ -11,7 +11,7 @@ example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
 
 
 
-def pretty_matrix(array=[[]]):
+def pretty_matrix(array):
     for count, i in enumerate(array):
         line = ""
         if count == 3 or count == 6:
@@ -28,7 +28,6 @@ def pretty_matrix(array=[[]]):
         print(line)
 
 
-# pretty_matrix(example_grid)
 
 
 def helperfunc(number, position_x, position_y, grid):  # Return true if number works in position on grid, else false
@@ -63,7 +62,7 @@ def sudoku_solver(grid):
 
 
     pretty_matrix(grid)  # Print a working solution
-    more = input("Y/N for more solutions: ")
+    more = input("\nY/N for more solutions: ") # Currently seems to go on forever if given grid only has one solution when Y is chosen
     if more.lower() == "y":
         pass
     else:
