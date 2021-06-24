@@ -74,3 +74,7 @@ def sudoku_solver(grid, visual=0.0):
         return False
     else:
         return True
+
+
+if __name__ == "__main__":
+    sudoku_solver(example_grid, 0)
