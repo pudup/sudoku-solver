@@ -1,3 +1,5 @@
+import os
+
 example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 4, 3],
                 [5, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -48,25 +50,26 @@ def helperfunc(number, position_x, position_y, grid):  # Return true if number w
     return True
 
 
-
 def sudoku_solver(grid):
     for i in range(0, 9):  # Loop through X positions
-        for j in range(0, 9): # Loop through Y positions
+        for j in range(0, 9):  # Loop through Y positions
             if grid[i][j] == 0:  # Check if position is empty
                 for k in range(1, 10):  # Try all numbers in empty position using helper function
                     if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
                         grid[i][j] = k  # If true then set position to working number
-                        sudoku_solver(grid)  # Recurse
-                        grid[i][j] = 0  # If dead end then reset
-                return  # Return when no 0s in grid
+                        can_continue = sudoku_solver(grid)  # Recurse
+                        if can_continue:
+                            return True
 
+                        grid[i][j] = 0  # If dead end then reset
+                return False  # Return when no 0s in grid
 
     pretty_matrix(grid)  # Print a working solution
     more = input("\nY/N for more solutions: ") # Currently seems to go on forever if given grid only has one solution when Y is chosen
     if more.lower() == "y":
-        pass
+        return False
     else:
-        exit()
+        return True
 
 
 sudoku_solver(example_grid)
