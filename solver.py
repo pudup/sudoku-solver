@@ -68,8 +68,8 @@ def sudoku_solver(grid, visual=0.0):
 
     print("\n")
     pretty_matrix(grid)  # Print a working solution
-    more = input(
-        "\nY/N for more solutions: ")  # Currently seems to go on forever if given grid only has one solution when Y is chosen
+    more = input("\nY/N for more solutions: ")
+    # Currently seems to go on forever if given grid only has one solution when Y is chosen
     if more.lower() == "y":
         return False
     else:
