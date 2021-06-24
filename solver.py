@@ -9,9 +9,7 @@ example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
                 [0, 2, 0, 0, 3, 0, 0, 0, 0],
                 [6, 0, 0, 0, 0, 0, 0, 7, 5],
                 [8, 0, 3, 4, 0, 0, 0, 0, 0],
-                [0, 0, 0, 2, 0, 0, 6, 0, 0],]
-
-
+                [0, 0, 0, 2, 0, 0, 6, 0, 0], ]
 
 
 def pretty_matrix(array):
@@ -33,8 +31,6 @@ def pretty_matrix(array):
         print(line)
 
 
-
-
 def helperfunc(number, position_x, position_y, grid):  # Return true if number works in position on grid, else false
     x = position_x
     y = position_y
@@ -47,7 +43,7 @@ def helperfunc(number, position_x, position_y, grid):  # Return true if number w
             return False
     for i in range(0, 3):  # Checks if number exists in the box
         for j in range(0, 3):
-            if grid[((x // 3) * 3)+i][((y // 3) * 3)+j] == number:
+            if grid[((x // 3) * 3) + i][((y // 3) * 3) + j] == number:
                 return False
     return True
 
@@ -72,11 +68,9 @@ def sudoku_solver(grid, visual=0.0):
 
     print("\n")
     pretty_matrix(grid)  # Print a working solution
-    more = input("\nY/N for more solutions: ") # Currently seems to go on forever if given grid only has one solution when Y is chosen
+    more = input(
+        "\nY/N for more solutions: ")  # Currently seems to go on forever if given grid only has one solution when Y is chosen
     if more.lower() == "y":
         return False
     else:
         return True
-
-
-sudoku_solver(example_grid, 0.05)
