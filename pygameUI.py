@@ -22,11 +22,11 @@ is_running = True
 while is_running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            is_running = False
             pygame.quit()
             sys.exit()
 
-    screen.fill((200, 200, 200))
+    screen.fill((200, 200, 200))  # Background colour
 
-    screen.blit(grid_image, (100, 100))
+    screen.blit(grid_image, (100, 100))  # Background grid image draw
     pygame.display.update()
