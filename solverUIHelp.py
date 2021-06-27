@@ -32,7 +32,7 @@ def pretty_matrix(array):
 
 
 def helperfunc(number, position_x, position_y, grid):  # Return true if number works in position on grid, else false
-    x = position_x
+    x = position_x  # These positions are backwards for classical graphs
     y = position_y
 
     for i in range(0, 9):  # Checks if number exists in row
