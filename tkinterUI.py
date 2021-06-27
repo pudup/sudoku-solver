@@ -41,6 +41,13 @@ def show_answer():
             rows[f"{j}" + f"{i}"].insert(0, str(grid[j][i]))
 
 
+def clear_board():
+    for j in range(9):
+        for i in range(9):
+            rows[f"{j}" + f"{i}"].delete(0, len(rows[f"{j}" + f"{i}"].get()))
+            rows[f"{j}" + f"{i}"].insert(0, "")
+
+
 def solve():
     global grid
     make_array()
@@ -52,7 +59,7 @@ my_window = tkinter.Tk()
 my_window.title("Didi Solve Solve")
 my_window.config(width=600, height=600, padx=60, pady=50, )
 
-my_canvas = tkinter.Canvas(width=600, height=600, highlightthickness=0)
+my_canvas = tkinter.Canvas(width=600, height=640, highlightthickness=0)
 grid_image = tkinter.PhotoImage(file=resource_path("backgr6.png"))
 my_canvas.create_image(300, 300, image=grid_image)
 my_canvas.grid(column=4, row=4)
@@ -71,5 +78,9 @@ for j in range(9):
 
 solve_button = tkinter.Button(text="Solve Puzzle", highlightthickness=0, command=solve)
 solve_window = my_canvas.create_window(300, 610, window=solve_button)
+
+clear_button = tkinter.Button(text="Clear Board", highlightthickness=0, command=clear_board)
+clear_window = my_canvas.create_window(300, 640, window=clear_button)
+
 
 my_window.mainloop()
