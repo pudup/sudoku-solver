@@ -8,4 +8,4 @@ It solves sudoku puzzles :>
 
 Download everything and run this command from the working folder
 
-```python3 tkinter.py```
+```python3 tkinterUI.py```
