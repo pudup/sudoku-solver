@@ -1,5 +1,16 @@
 import os
-from time import sleep
+from time import sleep, time
+import sys
+
+try:
+    visualizeYN = sys.argv[1]
+    visualizeYN = float(visualizeYN)
+    print(f"Using visual speed of {visualizeYN}")
+    doit = True
+except:
+    doit = False
+    print("Using default no visual. Provide argument as a number, e.g. 0.05 for visual")
+
 
 example_grid = [
     [0, 0, 0, 7, 0, 0, 0, 0, 0],
@@ -79,4 +90,11 @@ def sudoku_solver(grid, visual=0.0):
 
 
 if __name__ == "__main__":
-    sudoku_solver(example_grid, 0)
+    start = time()
+    if doit:
+        sudoku_solver(example_grid, visualizeYN)
+    else:
+        sudoku_solver(example_grid, )
+    end = time()
+
+    print("\n" + "Solved in " + str(end - start) + " seconds")
