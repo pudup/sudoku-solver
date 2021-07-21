@@ -2,17 +2,8 @@ import os
 from time import sleep, time
 import sys
 
-try:
-    visualizeYN = sys.argv[1]
-    visualizeYN = float(visualizeYN)
-    print(f"Using visual speed of {visualizeYN}")
-    doit = True
-except:
-    doit = False
-    print("Using default no visual. Provide argument as a number, e.g. 0.05 for visual")
 
-
-example_grid = [
+mega_hard_grid =[
     [0, 0, 0, 7, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 4, 3, 0, 2, 0, 0],
@@ -23,6 +14,40 @@ example_grid = [
     [0, 0, 2, 0, 0, 0, 0, 5, 0],
     [0, 4, 0, 0, 0, 0, 3, 0, 0],
 ]
+
+easy_grid =[
+    [0, 3, 0, 0, 9, 0, 0, 0, 8],
+    [4, 0, 0, 1, 5, 0, 6, 0, 9],
+    [8, 0, 9, 0, 0, 3, 0, 5, 0],
+    [0, 0, 0, 0, 3, 7, 9, 2, 0],
+    [7, 5, 0, 0, 0, 9, 0, 0, 0],
+    [2, 9, 0, 4, 1, 0, 0, 8, 5],
+    [5, 0, 8, 0, 4, 0, 1, 7, 0],
+    [0, 0, 7, 3, 0, 0, 0, 6, 4],
+    [3, 0, 1, 6, 0, 5, 0, 0, 0],
+]
+
+
+try:
+    visualizeYN = sys.argv[1]
+    visualizeYN = float(visualizeYN)
+    print(f"Using visual speed of {visualizeYN}")
+    doit = True
+except:
+    doit = False
+    print("Using default no visual. Provide argument as a number, e.g. 0.05 for visual")
+
+try:
+    if sys.argv[2] == "hard":
+        grid_to_use = mega_hard_grid
+        print("Using very hard grid")
+    else:
+        grid_to_use = easy_grid
+        print("Using default easy grid")
+except:
+    grid_to_use = easy_grid
+    print("Using default easy grid")
+
 
 
 def pretty_matrix(array):
@@ -92,9 +117,9 @@ def sudoku_solver(grid, visual=0.0):
 if __name__ == "__main__":
     start = time()
     if doit:
-        sudoku_solver(example_grid, visualizeYN)
+        sudoku_solver(grid_to_use, visualizeYN)
     else:
-        sudoku_solver(example_grid, )
+        sudoku_solver(grid_to_use, )
     end = time()
 
     print("\n" + "Solved in " + str(end - start) + " seconds")
