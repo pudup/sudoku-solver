@@ -31,7 +31,8 @@ easy_grid =[
 try:
     visualizeYN = sys.argv[1]
     visualizeYN = float(visualizeYN)
-    print(f"Using visual speed of {visualizeYN}")
+    print(f"Using visual speed of {visualizeYN} seconds")
+    sleep(2.5)
     doit = True
 except:
     doit = False
