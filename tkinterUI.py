@@ -1,11 +1,6 @@
 import tkinter
-import math
 import os
-from playsound import playsound
-from tkinter import messagebox
-import random
-from solverUIHelp import sudoku_solver, pretty_matrix, helperfunc
-from time import sleep
+from solverUIHelp import sudoku_solver
 
 
 def resource_path(relative_path):
