@@ -4,7 +4,7 @@ import pygame, sys
 pygame.init()
 
 # Create window
-screen = pygame.display.set_mode((800,800))
+screen = pygame.display.set_mode((800, 800))
 
 # Window Title
 pygame.display.set_caption("Didi Game Game")
@@ -15,7 +15,6 @@ pygame.display.set_icon(icon)
 
 # Grid image
 grid_image = pygame.image.load('backgr6.png')
-
 
 # Window loop
 is_running = True

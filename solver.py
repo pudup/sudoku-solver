@@ -2,8 +2,7 @@ import os
 from time import sleep, time
 import sys
 
-
-mega_hard_grid =[
+mega_hard_grid = [
     [0, 0, 0, 7, 0, 0, 0, 0, 0],
     [1, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 4, 3, 0, 2, 0, 0],
@@ -15,7 +14,7 @@ mega_hard_grid =[
     [0, 4, 0, 0, 0, 0, 3, 0, 0],
 ]
 
-easy_grid =[
+easy_grid = [
     [0, 3, 0, 0, 9, 0, 0, 0, 8],
     [4, 0, 0, 1, 5, 0, 6, 0, 9],
     [8, 0, 9, 0, 0, 3, 0, 5, 0],
@@ -26,7 +25,6 @@ easy_grid =[
     [0, 0, 7, 3, 0, 0, 0, 6, 4],
     [3, 0, 1, 6, 0, 5, 0, 0, 0],
 ]
-
 
 try:
     visualizeYN = sys.argv[1]
@@ -48,7 +46,6 @@ try:
 except:
     grid_to_use = easy_grid
     print("Using default easy grid")
-
 
 
 def pretty_matrix(array):

@@ -77,5 +77,4 @@ solve_window = my_canvas.create_window(300, 610, window=solve_button)
 clear_button = tkinter.Button(text="Clear Board", highlightthickness=0, command=clear_board)
 clear_window = my_canvas.create_window(300, 640, window=clear_button)
 
-
 my_window.mainloop()
