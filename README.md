@@ -8,7 +8,7 @@ It solves sudoku puzzles :>
 
 Download everything and run this command from the working folder
 
-```python3 tkinterUI.py```
+```python3 solvergui.py```
 
 
 ## Terminal version with visual solving output
