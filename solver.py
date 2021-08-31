@@ -29,7 +29,10 @@ easy_grid = [
 try:
     visualizeYN = sys.argv[1]
     visualizeYN = float(visualizeYN)
-    print(f"Using visual speed of {visualizeYN} seconds")
+    if visualizeYN == 0:
+        print(f"Solving without visual")
+    else:
+        print(f"Using visual speed of {visualizeYN} seconds")
     sleep(2.5)
     doit = True
 except:
@@ -85,6 +88,7 @@ def helperfunc(number, position_x, position_y, grid):  # Return true if number w
 
 
 def sudoku_solver(grid, visual=0.0):
+    start = time()
     for i in range(0, 9):  # Loop through X positions
         for j in range(0, 9):  # Loop through Y positions
             if grid[i][j] == 0:  # Check if position is empty
@@ -104,8 +108,11 @@ def sudoku_solver(grid, visual=0.0):
 
     print("\n")
     pretty_matrix(grid)  # Print a working solution
+    end = time()
+    print("\n" + "Solved in " + str(end - start) + " seconds")
     more = input("\nY/N for more solutions: ")
     # Currently seems to go on forever if given grid only has one solution when Y is chosen
+    # Comment above is not entirely true. Easy grids immediately return with no more solutions.
     if more.lower() == "y":
         return False
     else:
@@ -113,11 +120,8 @@ def sudoku_solver(grid, visual=0.0):
 
 
 if __name__ == "__main__":
-    start = time()
     if doit:
         sudoku_solver(grid_to_use, visualizeYN)
     else:
         sudoku_solver(grid_to_use, )
-    end = time()
 
-    print("\n" + "Solved in " + str(end - start) + " seconds")
