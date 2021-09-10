@@ -1,3 +1,5 @@
+# The pygameUI for the solver is not currently being worked on
+
 import pygame, sys
 
 # Initialize Pygame
