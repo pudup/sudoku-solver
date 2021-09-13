@@ -104,7 +104,7 @@ def sudoku_solver(grid, visual=0.0):
                             return True
 
                         grid[i][j] = 0  # If dead end then reset
-                return  # Return when no 0s in grid
+                return  # Return when checked all squares
 
     print("\n")
     pretty_matrix(grid)  # Print a working solution
