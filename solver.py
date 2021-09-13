@@ -95,7 +95,7 @@ def sudoku_solver(grid, visual=0.0):
                 for k in range(1, 10):  # Try all numbers in empty position using helper function
                     if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
                         grid[i][j] = k  # If true then set position to working number
-                        if visual:
+                        if visual > 0:
                             os.system('cls' if os.name == 'nt' else 'clear')
                             pretty_matrix(grid)
                             sleep(visual)
@@ -104,19 +104,12 @@ def sudoku_solver(grid, visual=0.0):
                             return True
 
                         grid[i][j] = 0  # If dead end then reset
-                return False  # Return when no 0s in grid
+                return  # Return when no 0s in grid
 
     print("\n")
     pretty_matrix(grid)  # Print a working solution
 
-    # more = input("\nY/N for more solutions: ")
-    # Currently seems to go on forever if given grid only has one solution when Y is chosen
-    # Comment above is not entirely true. Easy grids immediately return with no more solutions.
-    # if more.lower() == "y":
-    return False
-    # else:
-    #     return True
-
+    return True
 
 if __name__ == "__main__":
     start = time()
