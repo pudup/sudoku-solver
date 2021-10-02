@@ -107,6 +107,7 @@ def sudoku_solver(grid, visual=0.0):
                 return  # Return when checked all squares
 
     print("\n")
+    os.system('cls' if os.name == 'nt' else 'clear')
     pretty_matrix(grid)  # Print a working solution
 
     return True
