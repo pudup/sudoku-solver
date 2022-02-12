@@ -15,12 +15,32 @@ board = response.json()["board"]
 
 ## Functions
 # Input numbers
-def input_num(window, position):
-    font = pygame.font.SysFont("Verdana", 64)
-    num = font.render(str(1), True, NUMBERS_COL)
-    window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
+def clear_square(window, position):
+    x, y = position[1], position[0]
+    pygame.draw.rect(window, BACKGROUND_COL, (y * 80 + 10, x * 80 + 5, 60, 70))
     pygame.display.update()
 
+def input_num(window, position):
+    x, y = position[1], position[0]
+    # font = pygame.font.SysFont("Verdana", 64)
+    # num = font.render(str(1), True, NUMBERS_COL)
+    # window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
+    # pygame.display.update()
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                break
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                position = pygame.mouse.get_pos()
+                input_num(window, (position[0]//80, position[1]//80))
+            if event.type == pygame.KEYDOWN:
+                if board[x-1][y-1] == 0:
+                    return
+                if event.key == 48:
+                    clear_square(window=window, position=position)
+
+0
 #Grid Settings
 def draw_grid(window):
     for i in range(10): # Can be written in one loop if using a single colour
