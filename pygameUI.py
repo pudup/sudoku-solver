@@ -35,28 +35,6 @@ def clear_square(window, position):
     pygame.draw.rect(window, BACKGROUND_COL, (y * 80 + 10, x * 80 + 5, 60, 70))
     pygame.display.update()
 
-def input_num(window, position):
-    x, y = position[1], position[0]
-    if (y * 80) < 80 or (x * 80) < 80 or (y * 80) >= 800 or (x * 80) >= 800:
-        return
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                break
-            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
-                position = pygame.mouse.get_pos()
-                input_num(window, (position[0] // 80, position[1] // 80))
-            if event.type == pygame.KEYDOWN:
-                if board[x-1][y-1] != 0:
-                    return
-                if event.key == 48:
-                    clear_square(window=window, position=position)
-                    user_board[position[1] - 1][position[0] - 1] = 0
-                if 0 < (event.key - 48) < 10: # ASCII Value ';..;'
-                    clear_square(window=window, position=position)
-                    add_a_num(window, (y, x), event)
-
 
 #Grid Settings
 def draw_grid(window):
@@ -106,17 +84,17 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-            # if event.type == pygame.KEYDOWN:
-            #     if event.key == pygame.K_SPACE:
-            #         clr_scr(window=window)
-            #         draw_grid(window=window)
-            #         sudoku_solver(board)
-            #         for y in range(0, len(board[0])):
-            #             for x in range(0, len(board[0])):
-            #                 if board[y][x] != 0:
-            #                     num = font.render(str(board[y][x]), True, NUMBERS_COL)
-            #                     window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
-            #         pygame.display.update()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    clr_scr(window=window)
+                    draw_grid(window=window)
+                    sudoku_solver(board)
+                    for y in range(0, len(board[0])):
+                        for x in range(0, len(board[0])):
+                            if board[y][x] != 0:
+                                num = font.render(str(board[y][x]), True, NUMBERS_COL)
+                                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+                    pygame.display.update()
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 position = pygame.mouse.get_pos()
                 x, y = position[1] // 80, position[0] // 80
