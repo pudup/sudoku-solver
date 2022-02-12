@@ -1,7 +1,8 @@
 # Full rewrite
 import pygame
 import requests
-from solverUIHelp import sudoku_solver
+from solverUIHelp import sudoku_solver, helperfunc
+from copy import deepcopy
 
 # Colours (from colorhunt.co :>)
 BACKGROUND_COL = (251, 229, 229)
@@ -12,13 +13,18 @@ NUMBERS_COL = (230, 9, 101)
 #Get boards from sugoku api
 response = requests.get("https://sugoku.herokuapp.com/board?difficulty=easy")
 board = response.json()["board"]
+user_board = deepcopy(board)
 
 ## Functions
 # Input numbers
 def add_a_num(window, position, event):
     font = pygame.font.SysFont("Verdana", 64)
-    num = font.render(str(event.key - 48), True, (0, 0, 0))
+    if helperfunc(event.key - 48, position[1] - 1, position[0] - 1, user_board):
+        num = font.render(str(event.key - 48), True, (36, 161, 156))
+    else:
+        num = font.render(str(event.key - 48), True, (251, 116, 62))
     window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
+    user_board[position[1] - 1][position[0] - 1] = event.key - 48
     pygame.display.update()
 
 def clear_square(window, position):
@@ -37,17 +43,18 @@ def input_num(window, position):
                 break
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 position = pygame.mouse.get_pos()
-                input_num(window, (position[0]//80, position[1]//80))
+                input_num(window, (position[0] // 80, position[1] // 80))
             if event.type == pygame.KEYDOWN:
                 if board[x-1][y-1] != 0:
                     return
                 if event.key == 48:
                     clear_square(window=window, position=position)
+                    user_board[position[1] - 1][position[0] - 1] = 0
                 if 0 < (event.key - 48) < 10: # ASCII Value ';..;'
                     clear_square(window=window, position=position)
-                    add_a_num(window, position, event)
+                    add_a_num(window, (y, x), event)
 
-0
+
 #Grid Settings
 def draw_grid(window):
     for i in range(10): # Can be written in one loop if using a single colour
@@ -107,7 +114,7 @@ def main():
                     pygame.display.update()
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 position = pygame.mouse.get_pos()
-                input_num(window, (position[0]//80, position[1]//80))
+                input_num(window, (position[0] // 80, position[1] // 80))
 
 
 
