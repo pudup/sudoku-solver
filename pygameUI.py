@@ -1,33 +1,23 @@
-# The pygameUI for the solver is not currently being worked on
+# Full rewrite
+import pygame
 
-import pygame, sys
+def main():
+    pygame.init()
 
-# Initialize Pygame
-pygame.init()
+    #Window Settings
+    window = pygame.display.set_mode((600,600))
+    pygame.display.set_caption("Sudoku Solver")
+    window.fill((255,255,255))
 
-# Create window
-screen = pygame.display.set_mode((800, 800))
+    #Grid Settings
 
-# Window Title
-pygame.display.set_caption("Didi Game Game")
 
-# Window Icon
-icon = pygame.image.load("icon.png")
-pygame.display.set_icon(icon)
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
 
-# Grid image
-grid_image = pygame.image.load('backgr6.png')
 
-# Window loop
-is_running = True
-while is_running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            is_running = False
-            pygame.quit()
-            sys.exit()
-
-    screen.fill((200, 200, 200))  # Background colour
-
-    screen.blit(grid_image, (100, 100))  # Background grid image draw
-    pygame.display.update()
+if __name__ == "__main__":
+    main()
