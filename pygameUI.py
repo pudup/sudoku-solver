@@ -37,7 +37,7 @@ def clear_square(window, position):
     x, y = position[1], position[0]
     pygame.draw.rect(window, BACKGROUND_COL, (y * 80 + 10, x * 80 + 5, 60, 70))
 
-def clean_board(window, font):
+def update_board(window, font):
     window.fill(BACKGROUND_COL)
     for i in range(10):  # Can be written in one loop if using a single colour
         if i % 3 != 0:  # Remove unnecessary lines
@@ -138,10 +138,10 @@ def main():
                 x, y = position[1] // 80, position[0] // 80
                 if ((y * 80) < 80) or ((x * 80) < 80) or ((y * 80) >= 800) or ((x * 80) >= 800):
                     X, Y = 0, 0
-                    clean_board(window, font)
+                    update_board(window, font)
                 else:
                     X, Y = position[1]//80, position[0]//80
-                    clean_board(window, font)
+                    update_board(window, font)
                     highlight_square(window, (X, Y))
             if event.type == pygame.KEYDOWN:
                 if (X, Y) == (0, 0):
