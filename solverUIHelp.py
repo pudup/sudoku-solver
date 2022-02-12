@@ -68,4 +68,21 @@ def sudoku_solver(grid, visual=0.0):
 
     return True
 
+def visual_solver_help(grid):
+    for i in range(0, 9):  # Loop through X positions
+        for j in range(0, 9):  # Loop through Y positions
+            if grid[i][j] == 0:  # Check if position is empty
+                for k in range(1, 10):  # Try all numbers in empty position using helper function
+                    if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
+                        grid[i][j] = k  # If true then set position to working number
+                        pretty_matrix(grid)
+                        can_continue = sudoku_solver(grid)  # Recurse
+                        if can_continue:
+                            return True
+
+                        grid[i][j] = 0  # If dead end then reset
+                return False  # Return when no 0s in grid
+
+    return True
+
 # sudoku_solver(example_grid, 0.01)
