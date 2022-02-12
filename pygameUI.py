@@ -42,6 +42,11 @@ def grid_init(window, font):
                 window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
     pygame.display.update()
 
+#Clear screen
+def clr_scr(window):
+    window.fill(BACKGROUND_COL)
+    pygame.display.update()
+
 # Main loop
 def main():
     pygame.init()
@@ -64,6 +69,8 @@ def main():
                 return
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
+                    clr_scr(window=window)
+                    draw_grid(window=window)
                     sudoku_solver(board)
                     for y in range(0, len(board[0])):
                         for x in range(0, len(board[0])):
