@@ -15,6 +15,12 @@ board = response.json()["board"]
 
 ## Functions
 # Input numbers
+def add_a_num(window, position, event):
+    font = pygame.font.SysFont("Verdana", 64)
+    num = font.render(str(event.key - 48), True, (0, 0, 0))
+    window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
+    pygame.display.update()
+
 def clear_square(window, position):
     x, y = position[1], position[0]
     pygame.draw.rect(window, BACKGROUND_COL, (y * 80 + 10, x * 80 + 5, 60, 70))
@@ -22,10 +28,8 @@ def clear_square(window, position):
 
 def input_num(window, position):
     x, y = position[1], position[0]
-    # font = pygame.font.SysFont("Verdana", 64)
-    # num = font.render(str(1), True, NUMBERS_COL)
-    # window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
-    # pygame.display.update()
+    if (y * 80) < 80 or (x * 80) < 80 or (y * 80) >= 800 or (x * 80) >= 800:
+        return
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -35,10 +39,13 @@ def input_num(window, position):
                 position = pygame.mouse.get_pos()
                 input_num(window, (position[0]//80, position[1]//80))
             if event.type == pygame.KEYDOWN:
-                if board[x-1][y-1] == 0:
+                if board[x-1][y-1] != 0:
                     return
                 if event.key == 48:
                     clear_square(window=window, position=position)
+                if 0 < (event.key - 48) < 10: # ASCII Value ';..;'
+                    clear_square(window=window, position=position)
+                    add_a_num(window, position, event)
 
 0
 #Grid Settings
