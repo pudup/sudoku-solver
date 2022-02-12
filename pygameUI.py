@@ -10,6 +10,10 @@ THIN_LINES_COL = (255,161,201)
 THICC_LINES_COL = (249,72,146)
 NUMBERS_COL = (230, 9, 101)
 
+# Global Co-Ords
+X = 0
+Y = 0
+
 #Get boards from sugoku api
 response = requests.get("https://sugoku.herokuapp.com/board?difficulty=easy")
 board = response.json()["board"]
@@ -24,7 +28,6 @@ def add_a_num(window, position, event):
     else:
         num = font.render(str(event.key - 48), True, (251, 116, 62))
     window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
-    user_board[position[1] - 1][position[0] - 1] = event.key - 48
     pygame.display.update()
 
 def clear_square(window, position):
@@ -83,6 +86,8 @@ def clr_scr(window):
 
 # Main loop
 def main():
+    global X
+    global Y
     pygame.init()
 
     #Window Settings
@@ -101,20 +106,38 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 return
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    clr_scr(window=window)
-                    draw_grid(window=window)
-                    sudoku_solver(board)
-                    for y in range(0, len(board[0])):
-                        for x in range(0, len(board[0])):
-                            if board[y][x] != 0:
-                                num = font.render(str(board[y][x]), True, NUMBERS_COL)
-                                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
-                    pygame.display.update()
+            # if event.type == pygame.KEYDOWN:
+            #     if event.key == pygame.K_SPACE:
+            #         clr_scr(window=window)
+            #         draw_grid(window=window)
+            #         sudoku_solver(board)
+            #         for y in range(0, len(board[0])):
+            #             for x in range(0, len(board[0])):
+            #                 if board[y][x] != 0:
+            #                     num = font.render(str(board[y][x]), True, NUMBERS_COL)
+            #                     window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+            #         pygame.display.update()
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 position = pygame.mouse.get_pos()
-                input_num(window, (position[0] // 80, position[1] // 80))
+                x, y = position[1] // 80, position[0] // 80
+                if ((y * 80) < 80) or ((x * 80) < 80) or ((y * 80) >= 800) or ((x * 80) >= 800):
+                    X, Y = 0, 0
+                else:
+                    X, Y = position[1]//80, position[0]//80
+            if event.type == pygame.KEYDOWN:
+                if (X, Y) == (0, 0):
+                    pass
+                elif board[X-1][Y-1] != 0:
+                    pass
+                elif event.key == 48:
+                    clear_square(window=window, position=(Y, X))
+                    user_board[X-1][Y-1] = 0
+                elif 0 < (event.key - 48) < 10: # ASCII Value ';..;'
+                    clear_square(window=window, position=(Y, X))
+                    add_a_num(window, (y, x), event)
+                    user_board[X-1][Y-1] = event.key - 48
+
+
 
 
 
