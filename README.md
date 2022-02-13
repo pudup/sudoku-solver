@@ -6,11 +6,10 @@ It solves sudoku puzzles :>
 
 ## How to use
 
-Download everything and run this command from the working folder
+Clone repo and run this command from the working folder
 
-```python3 pygameUI.py```
+```python3 sudokugame.py```
 
-Press `space` to watch solver
 
 #### Requires
  
