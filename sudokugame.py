@@ -37,7 +37,7 @@ def main():
                 if event.key == pygame.K_SPACE: # AUTO SOLVER
                     solve_board(window, board, always_unsolved,)
                     user_board = board
-                    update_board(window, font, user_board, board)
+                    update_board(window, font, user_board, board, solver=True, always_unsolved=always_unsolved)
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 position = pygame.mouse.get_pos()
                 x, y = position[1] // 80, position[0] // 80
