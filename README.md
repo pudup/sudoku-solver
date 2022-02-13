@@ -8,7 +8,16 @@ It solves sudoku puzzles :>
 
 Download everything and run this command from the working folder
 
-```python3 solvergui.py```
+```python3 pygameUI.py```
+
+Press `space` to watch solver
+
+#### Requires
+ 
+`requests` and `pygame`
+
+Use 
+```pip install pygame requests```
 
 
 ## Terminal version with visual solving output
