@@ -45,6 +45,7 @@ def update_board(window, font, user_board, board):
             elif user_board[y][x] != 0:
                 num = font.render(str(user_board[y][x]), True, NUMBERS_COL)
                 window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+    insturctions(window)
     pygame.display.update()
 
 def highlight_square(window, position):
