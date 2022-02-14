@@ -2,13 +2,11 @@
 import pygame
 import sys
 sys.path.insert(0, "./PyGameComponents")
-from PyGameComponents.solverUIHelp import helperfunc
 from PyGameComponents.get_new_board import generateBoards
 from PyGameComponents.auto_solver import solve_board
 from PyGameComponents.colours_and_fonts import *
 from PyGameComponents.grid_init import draw_grid, grid_init
 from PyGameComponents.animation_funcs import add_a_num, clear_square, update_board, highlight_square
-from copy import deepcopy
 
 # Main loop
 def main():
@@ -25,7 +23,6 @@ def main():
 
     draw_grid(window=window,)
     grid_init(window=window, font=font, board=board)
-
 
     # Board loop
     while True:
