@@ -39,3 +39,11 @@ For no visual and hard grid, you must provide 0 as an arugment.
 Using a visual drastically increases the time it takes for the program to finish solving the grid. Replace the example grid with an easy
 version, or use the default provided easy grid, to avoid having to wait all day to see it go all the way through.
 0.05 is a good balance between visual clarity and time to solve.
+
+
+
+
+# To-Do
+Rewrite the whole thing with classes so there isn't so much surface redrawing ';..;'
+
+###### Maybe
