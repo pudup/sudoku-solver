@@ -19,6 +19,7 @@ grid = []
 def make_array():
     global grid
     acceptable = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+    grid = []
     for j in range(9):
         row = []
         for i in range(9):
