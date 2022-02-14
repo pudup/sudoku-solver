@@ -1,5 +1,7 @@
 # sudoku-solver
 
+<img src="./sudokuboardn.gif">
+
 It solves sudoku puzzles :>
 
 
