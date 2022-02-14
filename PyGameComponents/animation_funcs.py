@@ -2,10 +2,11 @@ import pygame
 from colours_and_fonts import *
 from solverUIHelp import helperfunc
 
+
 def add_a_num(window, position, event, user_board, Y, X):
     font = pygame.font.SysFont("Verdana", 64)
-    if user_board[position[1]- 1][position[0] - 1] == event.key - 48:
-        user_board[position[1]- 1][position[0] - 1] = 0
+    if user_board[position[1] - 1][position[0] - 1] == event.key - 48:
+        user_board[position[1] - 1][position[0] - 1] = 0
     if helperfunc(event.key - 48, position[1] - 1, position[0] - 1, user_board):
         num = font.render(str(event.key - 48), True, (36, 161, 156))
     else:
@@ -14,9 +15,11 @@ def add_a_num(window, position, event, user_board, Y, X):
     window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
     pygame.display.update()
 
+
 def clear_square(window, position):
     x, y = position[1], position[0]
     pygame.draw.rect(window, BACKGROUND_COL, (y * 80 + 10, x * 80 + 5, 60, 70))
+
 
 def update_board(window, font, user_board, board, solver=False, always_unsolved=False):
     window.fill(BACKGROUND_COL)
@@ -57,12 +60,14 @@ def update_board(window, font, user_board, board, solver=False, always_unsolved=
     insturctions(window)
     pygame.display.update()
 
+
 def highlight_square(window, position):
     x, y = position[1], position[0]
     for i in range(2):
         pygame.draw.line(window, (193, 222, 174), ((i * 80) + x * 80, y * 80), ((i * 80) + x * 80, y * 80 + 80), 8)
         pygame.draw.line(window, (193, 222, 174), (x * 80 - 3, (i * 80) + y * 80), (x * 80 + 84, (i * 80) + y * 80), 8)
         pygame.display.update()
+
 
 def insturctions(window):
     font = pygame.font.Font(None, 40)

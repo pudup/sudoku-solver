@@ -68,6 +68,7 @@ def sudoku_solver(grid, visual=0.0):
 
     return True
 
+
 def visual_solver_help(grid):
     for i in range(0, 9):  # Loop through X positions
         for j in range(0, 9):  # Loop through Y positions

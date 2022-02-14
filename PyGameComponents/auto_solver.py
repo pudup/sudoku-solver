@@ -8,18 +8,19 @@ thin_lines_col = THIN_LINES_COL
 thicc_lines_col = THICC_LINES_COL
 numbers_col = NUMBERS_COL
 
-def solve_board(window, board, always_unsolved,):
+
+def solve_board(window, board, always_unsolved, ):
     for i in range(0, 9):  # Loop through X positions
         for j in range(0, 9):  # Loop through Y positions
             if board[i][j] == 0:  # Check if position is empty
                 for k in range(1, 10):  # Try all numbers in empty position using helper function
                     if helperfunc(number=k, position_x=i, position_y=j, grid=board):
                         board[i][j] = k  # If true then set position to working number
-                        solver_redraw(window, board, always_unsolved,)
+                        solver_redraw(window, board, always_unsolved, )
                         highlight_square(window, (i + 1, j + 1))
                         pygame.display.update()
                         sleep(0.05)
-                        can_continue = solve_board(window, board, always_unsolved,)  # Recurse
+                        can_continue = solve_board(window, board, always_unsolved, )  # Recurse
                         if can_continue:
                             return True
 
@@ -29,9 +30,9 @@ def solve_board(window, board, always_unsolved,):
     return True
 
 
-def solver_redraw(window, board, always_unsolved,):
+def solver_redraw(window, board, always_unsolved, ):
     font = pygame.font.SysFont("Verdana", 64)
-    window.fill(background_col) # Clear screen
+    window.fill(background_col)  # Clear screen
     for i in range(10):  # Can be written in one loop if using a single colour
         if i % 3 != 0:  # Remove unnecessary lines
             pygame.draw.line(window, thin_lines_col, (80 + (80 * i), 80), (80 + (80 * i), 800), 2)
@@ -51,6 +52,7 @@ def solver_redraw(window, board, always_unsolved,):
                 num = font.render(str(board[y][x]), True, numbers_col)
                 window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
     pygame.display.update()
+
 
 def highlight_square(window, position):
     x, y = position[1], position[0]

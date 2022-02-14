@@ -88,7 +88,6 @@ def helperfunc(number, position_x, position_y, grid):  # Return true if number w
 
 
 def sudoku_solver(grid, visual=0.0):
-
     for i in range(0, 9):  # Loop through X positions
         for j in range(0, 9):  # Loop through Y positions
             if grid[i][j] == 0:  # Check if position is empty
@@ -111,6 +110,7 @@ def sudoku_solver(grid, visual=0.0):
     pretty_matrix(grid)  # Print a working solution
 
     return True
+
 
 if __name__ == "__main__":
     start = time()
