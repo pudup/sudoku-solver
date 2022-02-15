@@ -1,6 +1,6 @@
 # sudoku-solver
 
-<img src="./sudokuboardn.gif">
+<img src="./PyGameComponents/sudokuboardn.gif">
 
 It solves sudoku puzzles :>
 
