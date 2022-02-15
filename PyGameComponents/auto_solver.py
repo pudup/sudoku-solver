@@ -1,6 +1,7 @@
 from solverUIHelp import helperfunc
 from time import sleep
 from colours_and_fonts import *
+from animation_funcs import highlight_square
 import pygame
 
 background_col = BACKGROUND_COL
@@ -52,11 +53,3 @@ def solver_redraw(window, board, always_unsolved, ):
                 num = font.render(str(board[y][x]), True, numbers_col)
                 window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
     pygame.display.update()
-
-
-def highlight_square(window, position):
-    x, y = position[1], position[0]
-    for i in range(2):
-        pygame.draw.line(window, (193, 222, 174), ((i * 80) + x * 80, y * 80), ((i * 80) + x * 80, y * 80 + 80), 8)
-        pygame.draw.line(window, (193, 222, 174), (x * 80, (i * 80) + y * 80), (x * 80 + 80, (i * 80) + y * 80), 8)
-        pygame.display.update()
