@@ -1,9 +1,8 @@
-import requests
 from copy import deepcopy
+from board_gen import gen_board
 
 def generateBoards():
-    response = requests.get("https://sugoku.herokuapp.com/board?difficulty=easy")
-    board = response.json()["board"]
+    board = gen_board()
     always_unsolved = deepcopy(board)
     user_board = deepcopy(board)
 
