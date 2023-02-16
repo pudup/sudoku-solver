@@ -48,41 +48,20 @@ def helperfunc(number, position_x, position_y, grid):  # Return true if number w
     return True
 
 
-def sudoku_solver(grid, visual=0.0):
+def sudoku_solver(grid):
     for i in range(0, 9):  # Loop through X positions
         for j in range(0, 9):  # Loop through Y positions
             if grid[i][j] == 0:  # Check if position is empty
                 for k in range(1, 10):  # Try all numbers in empty position using helper function
                     if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
                         grid[i][j] = k  # If true then set position to working number
-                        if visual:
-                            os.system('cls' if os.name == 'nt' else 'clear')
-                            pretty_matrix(grid)
-                            sleep(visual)
-                        can_continue = sudoku_solver(grid, visual)  # Recurse
-                        if can_continue:
-                            return True
-
-                        grid[i][j] = 0  # If dead end then reset
-                return False  # Return when no 0s in grid
-
-    return True
-
-def visual_solver_help(grid):
-    for i in range(0, 9):  # Loop through X positions
-        for j in range(0, 9):  # Loop through Y positions
-            if grid[i][j] == 0:  # Check if position is empty
-                for k in range(1, 10):  # Try all numbers in empty position using helper function
-                    if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
-                        grid[i][j] = k  # If true then set position to working number
-                        pretty_matrix(grid)
                         can_continue = sudoku_solver(grid)  # Recurse
                         if can_continue:
                             return True
 
                         grid[i][j] = 0  # If dead end then reset
-                return False  # Return when no 0s in grid
+                return False  # Return when dead end
 
     return True
 
-# sudoku_solver(example_grid, 0.01)
+
