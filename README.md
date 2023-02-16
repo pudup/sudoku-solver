@@ -15,10 +15,12 @@ Clone repo and run this command from the working folder
 
 #### Requires
  
-`requests` and `pygame`
+~~`requests`~~ and `pygame`
 
 Use 
-```pip install pygame requests```
+```pip install pygame ``` ~~```requests```~~
+
+*No longer needs requests or internet*
 
 
 ## Terminal version with visual solving output
