@@ -11,10 +11,7 @@ def sudoku_solver_count(grid):
                 for k in range(1, 10):  # Try all numbers in empty position using helper function
                     if helperfunc(number=k, position_x=i, position_y=j, grid=grid):
                         grid[i][j] = k  # If true then set position to working number
-                        can_continue = sudoku_solver_count(grid)  # Recurse
-                        if can_continue:
-                            return True
-
+                        sudoku_solver_count(grid)  # Recurse
                         grid[i][j] = 0  # If dead end then reset
 
                 return False  # Return when dead end
