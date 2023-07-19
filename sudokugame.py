@@ -15,6 +15,7 @@ def main():
     X = 0  # Initial Co-ordinates
     Y = 0
     board, user_board, always_unsolved = generateBoards()  # Initial boards
+    clock = pygame.time.Clock()
     pygame.init()
 
     # Window Settings
@@ -28,6 +29,7 @@ def main():
 
     # Board loop
     while True:
+        clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
