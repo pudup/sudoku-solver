@@ -62,6 +62,7 @@ def main():
                 if event.key == 110:
                     getting_new = font.render('Getting New Board', True, NUMBERS_COL)
                     window.blit(getting_new, (170, 10))
+                    pygame.display.update()
                     board, user_board, always_unsolved = generateBoards()
                     update_board(window, font, user_board, board)
         clock.tick(60)
