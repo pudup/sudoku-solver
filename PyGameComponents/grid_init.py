@@ -15,7 +15,6 @@ def draw_grid(window):
             pygame.draw.line(window, THICC_LINES_COL, (80 + (80 * i), 80), (80 + (80 * i), 801),
                              4)  # 801 to smoothen corner
             pygame.draw.line(window, THICC_LINES_COL, (80, 80 + (80 * i)), (801, 80 + (80 * i)), 4)
-    pygame.display.update()
 
 
 # Grid populate
@@ -26,4 +25,3 @@ def grid_init(window, font, board):
                 num = font.render(str(board[y][x]), True, NUMBERS_COL)
                 window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
     insturctions(window)
-    pygame.display.update()

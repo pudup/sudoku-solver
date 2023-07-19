@@ -29,7 +29,6 @@ def main():
 
     # Board loop
     while True:
-        clock.tick(60)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -57,17 +56,16 @@ def main():
                 elif event.key == 48:
                     clear_square(window=window, position=(Y, X))
                     user_board[X - 1][Y - 1] = 0
-                    pygame.display.update()
                 elif 0 < (event.key - 48) < 10:  # ASCII Value ';..;'
                     add_a_num(window, (y, x), event, user_board, Y, X)
                     user_board[X - 1][Y - 1] = event.key - 48
                 if event.key == 110:
                     getting_new = font.render('Getting New Board', True, NUMBERS_COL)
                     window.blit(getting_new, (170, 10))
-                    pygame.display.update()
                     board, user_board, always_unsolved = generateBoards()
                     update_board(window, font, user_board, board)
-
+        clock.tick(60)
+        pygame.display.update()
 
 if __name__ == "__main__":
     main()
