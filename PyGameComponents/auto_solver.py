@@ -1,5 +1,4 @@
 from solverUIHelp import helperfunc
-from time import sleep
 from colours_and_fonts import *
 from animation_funcs import highlight_square
 import pygame
@@ -20,7 +19,7 @@ def solve_board(window, board, always_unsolved, ):
                         solver_redraw(window, board, always_unsolved, )
                         highlight_square(window, (i + 1, j + 1))
                         pygame.display.update()
-                        sleep(0.05)
+                        pygame.time.wait(50)
                         can_continue = solve_board(window, board, always_unsolved, )  # Recurse
                         if can_continue:
                             return True
