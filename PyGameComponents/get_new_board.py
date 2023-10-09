@@ -1,6 +1,7 @@
 from copy import deepcopy
 from board_gen import gen_board
 
+
 def generateBoards():
     board = gen_board()
     always_unsolved = deepcopy(board)

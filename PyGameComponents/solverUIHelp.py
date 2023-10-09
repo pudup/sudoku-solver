@@ -1,6 +1,3 @@
-import os
-from time import sleep
-
 example_grid = [[0, 0, 0, 8, 0, 1, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 4, 3],
                 [5, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -63,5 +60,3 @@ def sudoku_solver(grid):
                 return False  # Return when dead end
 
     return True
-
-
