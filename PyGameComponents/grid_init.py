@@ -23,5 +23,5 @@ def grid_init(window, font, board):
         for x in range(0, len(board[0])):
             if board[y][x] != 0:
                 num = font.render(str(board[y][x]), True, NUMBERS_COL)
-                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 6))
     insturctions(window)

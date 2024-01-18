@@ -47,8 +47,8 @@ def solver_redraw(window, board, always_unsolved, ):
         for x in range(0, len(board[0])):
             if board[y][x] != always_unsolved[y][x]:
                 num = font.render(str(board[y][x]), True, (24, 29, 49))
-                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 6))
             elif board[y][x] != 0:
                 num = font.render(str(board[y][x]), True, numbers_col)
-                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
+                window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 6))
     pygame.display.update()
