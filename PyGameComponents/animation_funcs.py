@@ -12,7 +12,7 @@ def add_a_num(window, position, event, user_board, Y, X):
     else:
         num = font.render(str(event.key - 48), True, (251, 116, 62))
     clear_square(window=window, position=(Y, X))
-    window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 6))
+    window.blit(num, (position[0] * 80 + 24, position[1] * 80 + 12))
     # pygame.display.update()
 
 
@@ -39,10 +39,10 @@ def update_board(window, font, user_board, board, solver=False, always_unsolved=
                 if user_board[y][x] != always_unsolved[y][x]:
                     num = font.render(str(user_board[y][x]), True, (36, 161, 156))
                     clear_square(window=window, position=(x + 1, y + 1))
-                    window.blit(num, ((x + 1) * 80 + 24, (y + 1) * 80 + 6))
+                    window.blit(num, ((x + 1) * 80 + 24, (y + 1) * 80 + 12))
                 elif user_board[y][x] != 0:
                     num = font.render(str(user_board[y][x]), True, NUMBERS_COL)
-                    window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 6))
+                    window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
             else:
                 if user_board[y][x] != board[y][x]:
                     old_val = user_board[y][x]
@@ -53,10 +53,10 @@ def update_board(window, font, user_board, board, solver=False, always_unsolved=
                         num = font.render(str(old_val), True, (251, 116, 62))
                     user_board[y][x] = old_val
                     clear_square(window=window, position=(x + 1, y + 1))
-                    window.blit(num, ((x + 1) * 80 + 24, (y + 1) * 80 + 6))
+                    window.blit(num, ((x + 1) * 80 + 24, (y + 1) * 80 + 12))
                 elif user_board[y][x] != 0:
                     num = font.render(str(user_board[y][x]), True, NUMBERS_COL)
-                    window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 6))
+                    window.blit(num, (((x + 1) * 80) + 24, ((y + 1) * 80) + 12))
     insturctions(window)
 
 
